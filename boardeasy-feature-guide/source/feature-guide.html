@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BoardEasy — Feature Guide</title>
+<style>
+@font-face{font-family:"Bricolage";src:url(fonts/BricolageGrotesque-Regular.ttf);font-weight:400}
+@font-face{font-family:"Bricolage";src:url(fonts/BricolageGrotesque-Bold.ttf);font-weight:700}
+@font-face{font-family:"Instrument";src:url(fonts/InstrumentSans-Regular.ttf);font-weight:400}
+@font-face{font-family:"Instrument";src:url(fonts/InstrumentSans-Italic.ttf);font-weight:400;font-style:italic}
+@font-face{font-family:"Instrument";src:url(fonts/InstrumentSans-Bold.ttf);font-weight:700}
+:root{--navy:#173B63;--ink:#1F2D3D;--ink2:#556578;--blue:#4EA5D9;--blue-d:#2C7DB0;--teal:#35B6A3;--teal-d:#1E8C7C;--rule:#D3DCE6;--soft:#EEF3F8}
+@page{size:A4;margin:14mm 14mm 16mm}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Instrument","Inter",system-ui,sans-serif;color:var(--ink);font-size:9pt;line-height:1.42;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+h1,h2,h3,h4{font-family:"Bricolage","Inter",sans-serif;font-weight:700;color:var(--navy);letter-spacing:-.015em;line-height:1.12}
+b{font-weight:700}
+.top{display:flex;align-items:center;gap:4mm;padding-bottom:4mm;border-bottom:1.2pt solid var(--navy)}
+.top svg{width:13mm;height:13mm;flex:none}
+.top h1{font-size:23pt}
+.top .sub{font-family:"Bricolage","Inter",sans-serif;font-size:10pt;color:var(--teal-d);margin-top:1mm}
+.intro{display:grid;grid-template-columns:1fr 1fr;column-gap:8mm;margin:4mm 0 2mm;font-size:9pt}
+.intro p+p{margin-top:1.5mm}
+.legend{display:flex;flex-direction:column;gap:1.2mm;font-size:8.6pt}
+.t{display:inline-block;font-family:"Bricolage","Inter",sans-serif;font-weight:700;font-size:7pt;padding:.1mm 1.4mm;border:.7pt solid;vertical-align:.3mm;white-space:nowrap}
+.t.sim{color:var(--blue-d);border-color:var(--blue)}
+.t.ext{color:var(--teal-d);border-color:var(--teal)}
+.t.auto{color:var(--ink2);border-color:var(--rule)}
+h2.sec{font-size:16pt;margin:6mm 0 1mm;padding-top:3mm;border-top:2.4pt solid var(--navy)}
+h2.sec span{font-family:"Instrument","Inter",sans-serif;font-weight:400;font-size:9pt;color:var(--ink2);margin-left:2mm;letter-spacing:0}
+.nav{font-size:8.4pt;color:var(--ink2);margin-bottom:2mm}
+.nav b{color:var(--navy)}
+/* deep dives */
+.dives{display:grid;grid-template-columns:1fr 1fr;gap:4mm 6mm;margin-top:2.5mm}
+.dive{border-top:1.4pt solid var(--teal);padding-top:2mm;break-inside:avoid}
+.dive h3{font-size:10.6pt;margin-bottom:1.2mm}
+.dive ol{padding-left:4.2mm;font-size:8.6pt}
+.dive li{margin-bottom:.8mm}
+.dive p{font-size:8.6pt}
+.dive .after{margin-top:1.2mm;font-size:8.2pt;color:var(--ink2)}
+/* feature tables */
+table{width:100%;border-collapse:collapse;table-layout:fixed}
+thead th{font-family:"Bricolage","Inter",sans-serif;font-size:7.8pt;color:var(--ink2);text-align:left;padding:0 2.5mm 1.2mm 0;border-bottom:1pt solid var(--navy)}
+td{vertical-align:top;padding:1.5mm 2.5mm 1.5mm 0;border-bottom:.5pt solid var(--rule);font-size:8.5pt;line-height:1.38}
+tr{break-inside:avoid}
+td:first-child{font-family:"Bricolage","Inter",sans-serif;font-weight:700;color:var(--navy);font-size:8.8pt;width:33mm}
+td:nth-child(3){color:var(--ink);background:#F7F9FC;padding-left:2mm;width:66mm}
+td:nth-child(3).none{color:var(--ink2);background:none}
+.where{display:block;font-family:"Instrument","Inter",sans-serif;font-weight:400;font-size:7.4pt;color:var(--ink2);margin-top:.4mm}
+.fine{margin-top:5mm;font-size:8pt;color:var(--ink2);border-top:.6pt solid var(--rule);padding-top:2.5mm}
+</style>
+</head>
+<body>
+<header class="top">
+  <svg viewBox="0 0 40 40" aria-label="BoardEasy logo"><rect width="40" height="40" rx="11" fill="#173B63"/><path d="M10 19.5 20 11l10 8.5V29a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 10 29z" fill="#fff"/><path d="m15.5 22 3.3 3.3 6.2-6.6" stroke="#35B6A3" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div><h1>BoardEasy feature guide</h1><div class="sub">Every feature for students, landlords, parents and administrators, and how each one records its information</div></div>
+</header>
+
+<div class="intro">
+  <div>
+    <p>Each table lists a role's features, what they do, and, where a feature records information (meter readings, bills, payments, photos and so on), <b>how that information gets into the app</b>. Features that only display information say so.</p>
+    <p>Everything describes the current browser prototype (version 1.0.0). It stores records in the browser on the device; the planned Android and web apps will use a secure cloud database instead.</p>
+  </div>
+  <div class="legend">
+    <div><span class="t sim">Simulated</span> Works in the demo but does not use a real service yet (payments, photo reading, GPS, verification).</div>
+    <div><span class="t ext">External link</span> Opens another company's website; nothing is processed inside BoardEasy.</div>
+    <div><span class="t auto">Automatic</span> The app calculates or creates the record by itself from data already logged.</div>
+  </div>
+</div>
+
+<h2 class="sec">How readings and records are logged<span>The four most important data flows</span></h2>
+<div class="dives">
+  <div class="dive">
+    <h3>Electricity meter reading</h3>
+    <ol>
+      <li><b>Who:</b> the landlord, once a month. Path: Utilities → Record electricity bill.</li>
+      <li>Pick the property and billing month. The <b>previous reading</b> fills in automatically from last month's bill.</li>
+      <li>Take or upload a <b>meter photo</b>. The app suggests the current reading <span class="t sim">Simulated</span> and the landlord checks it, or types the reading by hand.</li>
+      <li>The <b>current reading</b> must be at least the previous one. The rate fills in as CASURECO II's ₱11.17/kWh and can be edited.</li>
+      <li>Choose the split: <b>submeters</b> (enter each room's previous and current reading; leftover common-area use is paid by the landlord or split by days) or <b>one shared meter</b> (a shared percentage split by days, the rest by days and declared appliances).</li>
+      <li>Preview every share, then <b>Finalize and send to tenants</b>.</li>
+    </ol>
+    <p class="after">Saved: meter ID, date, photo, readings, rate, method, formula and each tenant's share. Each share becomes a charge and a notification. Edits recalculate shares and keep the old numbers in a change history.</p>
+  </div>
+  <div class="dive">
+    <h3>Water bill reading</h3>
+    <ol>
+      <li><b>Who:</b> the landlord. Path: Utilities → Water → Record water bill.</li>
+      <li>Enter the <b>house meter consumption in m³</b>: the app computes the bill with Metro Naga Water District rates (₱160 for the first 10 m³, then ₱18.40 to ₱24.25 per m³). Or type the <b>total from the actual water bill</b>.</li>
+      <li>Optionally attach a photo of the bill or meter.</li>
+      <li>Choose the split: <b>per-room submeters</b> (each room's readings), <b>equal</b>, <b>by days occupied</b>, or <b>custom amounts</b> that must add up exactly to the total.</li>
+      <li>Finalize to send each tenant their share.</li>
+    </ol>
+    <p class="after">Tenants see the same breakdown and can tap Question this bill. Shares are split to the exact centavo so they always add up to the bill.</p>
+  </div>
+  <div class="dive">
+    <h3>Rent and payments</h3>
+    <ol>
+      <li><b>Rent charges</b> are created <span class="t auto">Automatic</span> when a tenant is checked in, due on the 1st of each month. The landlord can also generate the next month's rent from Rent tracking.</li>
+      <li><b>In-app payment:</b> the student or a connected parent taps Pay, chooses GCash, Maya, Demo Wallet or Manual, and can pay part of a bill <span class="t sim">Simulated</span>.</li>
+      <li><b>Cash or outside payment:</b> the landlord opens the charge and uses Record payment: amount received, method and date received.</li>
+    </ol>
+    <p class="after">Every attempt is logged as a transaction with a reference number (for example DEMO-2026-10001), amount, method, date and status: paid, failed or cancelled. Already-paid bills cannot be paid twice. A receipt is created for each payment.</p>
+  </div>
+  <div class="dive">
+    <h3>Room condition and deposits</h3>
+    <ol>
+      <li><b>Move-in or move-out report</b> (landlord: Room reports; student: My rental): date, <b>room photos</b>, furniture condition (Good, Fair, Worn, Damaged), appliance condition, and existing damage.</li>
+      <li>Move-out adds cleaning condition, changes from the original condition, and up to three <b>proposed deductions</b> with amounts.</li>
+      <li>The other party <b>confirms</b> the report; finalized reports are never overwritten, only revised with history.</li>
+      <li><b>Deposit:</b> its amount is recorded at check-in; the landlord enters deductions (label and amount, never more than the deposit) and records the refund <span class="t sim">Simulated</span>.</li>
+    </ol>
+    <p class="after">Photos are resized in the browser before saving. Students can compare move-in and move-out side by side.</p>
+  </div>
+</div>
+
+<h2 class="sec">Student mode<span>Demo account: student@example.com, password demo123</span></h2>
+<p class="nav">Menu: <b>Home, Find, Bills, Passport</b> · My stay: <b>My rental, Trash pickup, Favorites, Bookings, Reviews</b> · Account: <b>Parent access, Notifications, Account</b></p>
+<table>
+<thead><tr><th>Feature</th><th>What it is</th><th>How the information is logged</th></tr></thead>
+<tbody>
+<tr><td>Home dashboard<span class="where">Home</span></td><td>Current boarding house, room, rent and next due date, plus "Today at a glance": outstanding balance, unpaid utilities, next trash pickup, distance home, latest announcement and on-time rate.</td><td>Display only. Each tile reads records already logged by bills, payments, schedules and announcements.</td></tr>
+<tr><td>Search listings<span class="where">Find</span></td><td>Search by name, barangay, campus or a price; filter by rent range, amenities, available rooms, curfew, visitors, room size, flood label and campus; sort by price, distance, rating or availability.</td><td>Display only. Listings are entered by landlords.</td></tr>
+<tr><td>Listing details<span class="where">Tap any listing</span></td><td>Six tabs: Overview, Rooms, House rules, Location (illustrative map), Reviews, Safety (illustrative flood notes).</td><td>Display only.</td></tr>
+<tr><td>Favorites and compare<span class="where">Heart icon; Favorites</span></td><td>Save listings and compare up to three side by side.</td><td>Saved to the student's account when the heart is tapped.</td></tr>
+<tr><td>Booking request<span class="where">Listing → Rooms → Request booking</span></td><td>Ask to rent a specific room; cancel while pending; see the landlord's decision.</td><td>The student enters a move-in date (after today) and a message. Logged as a pending request with an ID; the landlord is notified.</td></tr>
+<tr><td>Inquiry<span class="where">Listing → Send inquiry</span></td><td>Message a landlord about a listing before booking.</td><td>Typed message, saved with the time; the landlord's reply appears under Bookings.</td></tr>
+<tr><td>Bills and payments<span class="where">Bills: Due, Utility bills, History, Bill questions</span></td><td>All charges with status (Pending, Partially Paid, Paid, Overdue); pay one or several at once.</td><td>See "Rent and payments" above. Payments are <span class="t sim">Simulated</span>.</td></tr>
+<tr><td>Bill breakdown<span class="where">Bills → open a utility bill</span></td><td>The meter photo, readings, rate, formula and every share behind a bill, with its change history.</td><td>Display only; built from the landlord's meter entry.</td></tr>
+<tr><td>Question a bill<span class="where">Bill breakdown → Question this bill</span></td><td>Raise a concern about a utility charge and follow the conversation.</td><td>Typed message, logged as a thread with status: Open, Under Review, Resolved or Rejected.</td></tr>
+<tr><td>Declared appliances<span class="where">My rental → Declare appliances</span></td><td>List the appliances you use so a shared-meter bill is split fairly.</td><td>Checkboxes: electric fan, laptop, refrigerator, rice cooker, television, air conditioner, electric kettle. Applies to future bills.</td></tr>
+<tr><td>Receipts<span class="where">Bills → History</span></td><td>A receipt for every payment, with copy, save and print.</td><td>Created <span class="t auto">Automatic</span> from each transaction.</td></tr>
+<tr><td>Rental Passport<span class="where">Passport</span></td><td>On-time payment rate, record rating (Excellent to Needs attention), monthly history and past stays; share with parents or landlords.</td><td>Calculated <span class="t auto">Automatic</span> from rent payment dates versus due dates. Landlord feedback is typed by past landlords.</td></tr>
+<tr><td>My rental<span class="where">My rental</span></td><td>Current room, landlord, rental agreement (view, print or save), deposit status, room reports and past stays.</td><td>Agreement is generated from the tenancy record. Reports: see "Room condition and deposits" above.</td></tr>
+<tr><td>Distance home and sharing<span class="where">My rental, or the Home tile</span></td><td>Approximate distance to the boarding house and a status (At boarding house to Far away); share it with your landlord or parents for a set time.</td><td><span class="t sim">Simulated</span>: "Update My Demo Location" steps through six sample points. The phone's real location is never read. Sharing is off by default and expires on its own.</td></tr>
+<tr><td>Trash pickup<span class="where">Trash pickup</span></td><td>Next pickup with countdown, week calendar and schedule for your house; mark your waste as prepared; report a missed pickup.</td><td>Schedules are entered by the landlord. Tapping "Mark my waste as prepared" logs it for that date. Reminder times are chosen by the student (default 24 h, 12 h, 1 h before). Reports are typed messages.</td></tr>
+<tr><td>Reviews<span class="where">Reviews → Write review</span></td><td>Review places you stayed; reviews carry a verified-tenant label only after a recorded stay.</td><td>Six 1-to-5 ratings (cleanliness, safety, location, amenities, responsiveness, overall) plus written text.</td></tr>
+<tr><td>Report a listing or review<span class="where">Listing or review page</span></td><td>Flag misleading listings or reviews for the administrator.</td><td>Typed reason; the administrator is notified.</td></tr>
+<tr><td>Parent access<span class="where">Parent access</span></td><td>Create an invite code, approve parent requests, choose what each parent sees (payments, property, safety, passport) and revoke access.</td><td>Code is generated by the app (BE-XXXXXX, valid 7 days). Permissions are switches saved per parent.</td></tr>
+<tr><td>Order Food<span class="where">Listing page or Home</span></td><td>Opens GrabFood or foodpanda; in-app ordering is not set up.</td><td><span class="t ext">External link</span> Nothing is recorded and no address is sent.</td></tr>
+</tbody></table>
+
+<h2 class="sec">Landlord mode<span>Demo account: landlord@example.com, password demo123</span></h2>
+<p class="nav">Menu: <b>Dashboard, Properties, Rent, Utilities</b> · Manage: <b>Tenants, Rooms, Vacancies, Bookings, Waste</b> · Records: <b>Room reports, Deposits, Bill questions, Announcements, Reviews</b></p>
+<table>
+<thead><tr><th>Feature</th><th>What it is</th><th>How the information is logged</th></tr></thead>
+<tbody>
+<tr><td>Dashboard<span class="where">Dashboard</span></td><td>Rooms, tenants, rent expected versus collected, overdue totals, utilities billed, charts, and a task list ranked urgent, important or general.</td><td>Display only; calculated <span class="t auto">Automatic</span> from rent, bills, bookings and reports.</td></tr>
+<tr><td>Properties<span class="where">Properties → Add boarding house</span></td><td>Add, edit or delete boarding houses; new listings show as pending until an admin approves them.</td><td>Form: name, barangay, nearest campus, distance, type, floors, description, amenities, house rules, flood label, photos.</td></tr>
+<tr><td>Rooms<span class="where">Rooms</span></td><td>Add, edit or delete rooms and filter by property and status.</td><td>Form: room number, type (Single to Bedspace), maximum occupancy, monthly rent, aircon, private bath, furnished, status, notes. Occupied or reserved status updates automatically.</td></tr>
+<tr><td>Vacancies<span class="where">Vacancies</span></td><td>Every room grouped as occupied, available, reserved or under maintenance, with quick actions.</td><td>Display only; status comes from tenants and approved bookings.</td></tr>
+<tr><td>Tenants<span class="where">Tenants → Add tenant</span></td><td>Active and past tenants with room, rent and balance; view, edit, move out, and write feedback.</td><td>Form: student account or a name for someone without the app, room, move-in date, rent, deposit. Creates rent charges and a deposit <span class="t auto">Automatic</span>. Feedback is typed and shows on the tenant's Rental Passport.</td></tr>
+<tr><td>Bookings and inquiries<span class="where">Bookings: Pending, Approved, All, Inquiries</span></td><td>Approve or reject requests, check tenants in on move-in day, and reply to inquiries.</td><td>Approving reserves the room. Check-in creates the tenancy. Replies are typed.</td></tr>
+<tr><td>Rent tracking<span class="where">Rent</span></td><td>Each month's rent by status; generate next month's rent; send reminders; edit a charge.</td><td>See "Rent and payments" above. Record payment: amount received, method, date received. Reminders are in-app notifications.</td></tr>
+<tr><td>Utilities<span class="where">Utilities: Electricity, Water</span></td><td>Record and split electricity and water bills, see who has paid, and edit a finalized bill.</td><td>See "Electricity meter reading" and "Water bill reading" above. The meter photo reading is <span class="t sim">Simulated</span>.</td></tr>
+<tr><td>Room reports<span class="where">Room reports → New move-in report / Record move-out</span></td><td>Move-in and move-out condition records, kept permanently, with side-by-side comparison.</td><td>See "Room condition and deposits" above.</td></tr>
+<tr><td>Deposits<span class="where">Deposits</span></td><td>Deposits held, proposed deductions and refunds.</td><td>Deductions: up to three, each a label and amount. Refund is recorded <span class="t sim">Simulated</span>. Every step is kept in a history.</td></tr>
+<tr><td>Bill questions<span class="where">Bill questions</span></td><td>Tenants' questions about utility bills.</td><td>Typed reply and a status: Open, Under Review, Resolved or Rejected.</td></tr>
+<tr><td>Announcements<span class="where">Announcements → New announcement</span></td><td>Post notices to tenants of one property.</td><td>Form: property, category (for example water interruption, maintenance, waste collection change), title and message.</td></tr>
+<tr><td>Waste schedules<span class="where">Waste: Schedules, This week, Calendar, Reports</span></td><td>Set trash collection schedules per property, mark pickups, pause or delete schedules, and answer missed-pickup reports.</td><td>Form: category (biodegradable, recyclable, residual, special), repeat (daily, weekly, chosen weekdays, every N weeks, one-time), start and end time, prepare-by time, instructions. Each pickup is marked Collected, Delayed or Missed; tenants are notified.</td></tr>
+<tr><td>Reviews<span class="where">Reviews</span></td><td>Your landlord rating and reviews; reply or report a review.</td><td>Rating calculated <span class="t auto">Automatic</span> from published reviews. Replies are typed.</td></tr>
+<tr><td>Shared distance<span class="where">Tenants → view tenant</span></td><td>A tenant's approximate distance home, only while they choose to share it.</td><td>Display only. <span class="t sim">Simulated</span> location.</td></tr>
+</tbody></table>
+
+<h2 class="sec">Parent mode<span>Demo account: parent@example.com, password demo123</span></h2>
+<p class="nav">Menu: <b>Home, Payments, Safety, Students</b> · Account: <b>Notifications, Account</b></p>
+<table>
+<thead><tr><th>Feature</th><th>What it is</th><th>How the information is logged</th></tr></thead>
+<tbody>
+<tr><td>Home<span class="where">Home</span></td><td>A card per connected student with the permissions granted, their boarding house, balance and next due date, plus shared distance when on.</td><td>Display only, limited to what the student allows.</td></tr>
+<tr><td>Payments<span class="where">Payments</span></td><td>The student's amounts due, Pay or Pay all on their behalf, and receipts and history.</td><td>Same payment record as a student payment, marked "Paid by" the parent <span class="t sim">Simulated</span>. The student and landlord are notified.</td></tr>
+<tr><td>Safety<span class="where">Safety</span></td><td>Illustrative safety and flood notes for the student's boarding house.</td><td>Display only. Flood labels are illustrative, not official data.</td></tr>
+<tr><td>Connect a student<span class="where">Students → Enter an invitation code</span></td><td>Link to a student, see pending and approved connections, cancel a request.</td><td>The parent types the student's code. The connection waits for the student's approval.</td></tr>
+</tbody></table>
+
+<h2 class="sec" style="break-before:page">Administrator mode<span>Demo account: admin@example.com, password admin123</span></h2>
+<p class="nav">Menu: <b>Overview, Users, Listings, Transactions</b> · Moderation: <b>Reviews, Business, Waste schedules, Settings</b></p>
+<table>
+<thead><tr><th>Feature</th><th>What it is</th><th>How the information is logged</th></tr></thead>
+<tbody>
+<tr><td>Overview<span class="where">Overview</span></td><td>Platform totals: users by role, boarding houses, rooms, transactions, revenue, pending listings, reports and open bill questions.</td><td>Display only; calculated <span class="t auto">Automatic</span>.</td></tr>
+<tr><td>Users<span class="where">Users</span></td><td>Every account, filtered by role; activate or deactivate accounts.</td><td>A switch per account. Deactivated users cannot sign in and their listings are hidden.</td></tr>
+<tr><td>Listings<span class="where">Listings: All, Pending, Reported, Rejected</span></td><td>Approve or reject new boarding houses and handle reported listings.</td><td>Approving adds the DEMO VERIFIED label <span class="t sim">Simulated</span>; it is not a real-world inspection.</td></tr>
+<tr><td>Transactions<span class="where">Transactions</span></td><td>Every payment, including failed and cancelled attempts, filtered by status and method.</td><td>Display only; logged by each payment.</td></tr>
+<tr><td>Review moderation<span class="where">Reviews</span></td><td>Remove or restore reported reviews, or dismiss the reports.</td><td>One tap per action; the review's status is saved.</td></tr>
+<tr><td>Business simulation<span class="where">Business</span></td><td>Illustrative revenue from a landlord fee per room, a fee per payment and referral fees, by month.</td><td>The admin types sample prices (defaults ₱25, ₱5, ₱500). Labeled untested assumptions.</td></tr>
+<tr><td>Waste overview<span class="where">Waste schedules</span></td><td>All collection schedules and missed-pickup reports across properties.</td><td>Display only.</td></tr>
+<tr><td>Settings<span class="where">Settings</span></td><td>Default electricity and water rates, appliance weights, property and room categories; reset the demo; run the 38 built-in checks.</td><td>Typed values. Rates and weights apply to future bills.</td></tr>
+</tbody></table>
+
+<h2 class="sec">In every mode</h2>
+<table>
+<thead><tr><th>Feature</th><th>What it is</th><th>How the information is logged</th></tr></thead>
+<tbody>
+<tr><td>Notifications<span class="where">Bell icon</span></td><td>Payment, bill, booking, announcement and reminder alerts, ranked urgent, important or general; mark as read or delete.</td><td>Created <span class="t auto">Automatic</span> by the action that caused them. In-app only; no SMS or email is sent.</td></tr>
+<tr><td>Account<span class="where">Account</span></td><td>Your details, edit name and contact number, switch demo accounts, rates and sources used, welcome guide.</td><td>Typed name and contact number.</td></tr>
+<tr><td>Sign up and sign in<span class="where">Sign-in screen</span></td><td>Create a student, landlord or parent account, or use the one-tap demo accounts.</td><td>Form: name, email, password (at least 6 characters), account type, contact number. Admin accounts cannot be created publicly.</td></tr>
+</tbody></table>
+
+<p class="fine">Source: the BoardEasy prototype (index.html, version 1.0.0) on the main branch of github.com/markfrancisportugalcarillo01-blip/boardeasy. All boarding houses, people, readings and payments in the demo are fictional; utility rates and Naga City places are real.</p>
+</body>
+</html>

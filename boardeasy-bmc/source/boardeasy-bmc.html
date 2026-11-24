@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BoardEasy — Business Model Canvas</title>
+<style>
+@font-face{font-family:"Bricolage";src:url(fonts/BricolageGrotesque-Regular.ttf);font-weight:400}
+@font-face{font-family:"Bricolage";src:url(fonts/BricolageGrotesque-Bold.ttf);font-weight:700}
+@font-face{font-family:"Instrument";src:url(fonts/InstrumentSans-Regular.ttf);font-weight:400}
+@font-face{font-family:"Instrument";src:url(fonts/InstrumentSans-Italic.ttf);font-weight:400;font-style:italic}
+@font-face{font-family:"Instrument";src:url(fonts/InstrumentSans-Bold.ttf);font-weight:700}
+:root{
+  --navy:#173B63; --ink:#1F2D3D; --ink2:#556578;
+  --blue:#4EA5D9; --teal:#35B6A3; --teal-d:#1E8C7C;
+  --soft:#F1F5F9; --rule:#C9D4E0;
+}
+@page{size:A4 landscape;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#cfd6de}
+body{font-family:"Instrument","Inter",system-ui,sans-serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact;font-variant-numeric:lining-nums}
+.page{width:297mm;height:210mm;background:#fff;margin:0 auto;position:relative;overflow:hidden;padding:8.5mm 10mm 0;display:flex;flex-direction:column}
+@media screen{.page{margin:8mm auto;box-shadow:0 1px 6px rgba(0,0,0,.15)}}
+
+/* header */
+.head{display:grid;grid-template-columns:auto 1fr;column-gap:8mm;align-items:end;padding-bottom:3mm}
+.title{display:flex;align-items:center;gap:3mm}
+.title svg{width:11.5mm;height:11.5mm;flex:none}
+.title h1{font-family:"Bricolage","Inter",sans-serif;font-weight:700;font-size:19pt;letter-spacing:-.025em;color:var(--navy);line-height:1}
+.title .sub{font-family:"Bricolage","Inter",sans-serif;font-size:8.6pt;color:var(--teal-d);margin-top:1mm}
+.meta{display:grid;grid-template-columns:30mm 1fr 30mm 15mm;column-gap:4mm}
+.meta div{border-bottom:.8pt solid var(--navy);padding-bottom:1mm}
+.meta label{display:block;font-size:6.6pt;color:var(--ink2);margin-bottom:.4mm}
+.meta b{font-family:"Bricolage","Inter",sans-serif;font-size:8.4pt;color:var(--navy);font-weight:700}
+.meta .names b{font-size:7.8pt}
+.nm{white-space:nowrap}
+
+/* canvas grid */
+.canvas{flex:1;display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:1fr 1fr 49mm;border:1.1pt solid var(--navy);min-height:0}
+.blk{border-right:.6pt solid var(--rule);border-bottom:.6pt solid var(--rule);padding:2.4mm 2.6mm 2mm;min-height:0;overflow:hidden;position:relative}
+.kp{grid-column:1/3;grid-row:1/3}
+.ka{grid-column:3/5;grid-row:1/2}
+.kr{grid-column:3/5;grid-row:2/3}
+.vp{grid-column:5/7;grid-row:1/3;background:#F3F8FC}
+.cr{grid-column:7/9;grid-row:1/2}
+.ch{grid-column:7/9;grid-row:2/3}
+.cs{grid-column:9/11;grid-row:1/3;border-right:0}
+.co{grid-column:1/6;grid-row:3/4;border-bottom:0;border-top:1.1pt solid var(--navy)}
+.rv{grid-column:6/11;grid-row:3/4;border-bottom:0;border-right:0;border-top:1.1pt solid var(--navy)}
+.h{display:flex;align-items:center;gap:1.6mm;margin-bottom:1.6mm}
+.h svg{width:4.6mm;height:4.6mm;flex:none}
+.h h2{font-family:"Bricolage","Inter",sans-serif;font-weight:700;font-size:9.4pt;color:var(--navy);letter-spacing:-.01em;line-height:1.05}
+.lede{font-size:6.9pt;color:var(--ink2);line-height:1.3;margin-bottom:1.3mm;font-style:italic}
+ul{list-style:none}
+li{font-size:7.3pt;line-height:1.3;padding:.75mm 0 .75mm 2.9mm;position:relative;border-top:.4pt solid #E3E9F0}
+li:first-child{border-top:0}
+li::before{content:"";position:absolute;left:0;top:1.75mm;width:1.4mm;height:1.4mm;background:var(--teal)}
+li b{font-weight:700;color:var(--navy)}
+li.p::before{width:1.5mm;height:1.5mm;top:1.7mm;background:repeating-linear-gradient(135deg,var(--blue) 0 .38mm,#fff .38mm .62mm);outline:.55pt solid var(--blue);outline-offset:-.55pt}
+.tag{display:inline-block;font-family:"Bricolage","Inter",sans-serif;font-size:6.3pt;font-weight:700;color:var(--teal-d);border:.6pt solid var(--teal);padding:.1mm 1.2mm;margin-top:1.2mm;margin-right:1mm}
+.two{display:grid;grid-template-columns:1fr 1fr;column-gap:4mm}
+.price{display:grid;grid-template-columns:repeat(3,1fr);column-gap:3mm;margin:1mm 0 1.4mm}
+.price div{border-top:1.6pt solid var(--navy);padding-top:1mm}
+.price b{display:block;font-family:"Bricolage","Inter",sans-serif;font-size:12pt;color:var(--navy);line-height:1.05}
+.price span{font-size:6.8pt;line-height:1.25;color:var(--ink);display:block}
+.seg{margin-bottom:1.2mm}
+.seg h3{font-family:"Bricolage","Inter",sans-serif;font-size:8pt;color:var(--navy);font-weight:700;margin-top:1.1mm}
+.seg p{font-size:7.25pt;line-height:1.3}
+
+/* footer */
+.foot{display:flex;justify-content:space-between;align-items:center;gap:6mm;padding:1.8mm 0 2.4mm;font-size:6.3pt;color:var(--ink2)}
+.key{display:flex;gap:4mm;align-items:center}
+.key i{display:inline-block;width:2.2mm;height:2.2mm;vertical-align:-.3mm;margin-right:1mm}
+.key .e{background:var(--teal)}
+.key .pp{background:repeating-linear-gradient(135deg,var(--blue) 0 .35mm,#fff .35mm .7mm);outline:.5pt solid var(--blue);outline-offset:-.5pt}
+</style>
+</head>
+<body>
+<section class="page" id="p1">
+  <header class="head">
+    <div class="title">
+      <svg viewBox="0 0 40 40" aria-label="BoardEasy logo"><rect width="40" height="40" rx="11" fill="#173B63"/><path d="M10 19.5 20 11l10 8.5V29a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 10 29z" fill="#fff"/><path d="m15.5 22 3.3 3.3 6.2-6.6" stroke="#35B6A3" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div><h1>Business Model Canvas</h1><div class="sub">BoardEasy: boarding-house discovery and management, Naga City</div></div>
+    </div>
+    <div class="meta">
+      <div><label>Designed for</label><b>BoardEasy</b></div>
+      <div class="names"><label>Designed by</label><b><span class="nm">Kyle S. Loquinario,</span> <span class="nm">Neina Faith B. Sallan,</span><br><span class="nm">Elijah Daine C. Camba,</span> <span class="nm">Kimberly E. Cabrea</span></b></div>
+      <div><label>Date</label><b>24/11/2026</b></div>
+      <div><label>Version</label><b>1.0</b></div>
+    </div>
+  </header>
+
+  <main class="canvas">
+    <!-- KEY PARTNERS -->
+    <section class="blk kp">
+      <div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="#173B63" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12.5 11 15.5a1.8 1.8 0 0 0 2.6 0l4.9-4.9"/><path d="M3 11 7 7l4 1.5L14 6l7 5-4 4"/><path d="M3 11l5 5"/></svg><h2>Key Partners</h2></div>
+      <p class="lede">All prospective. No partnership has been signed yet.</p>
+      <ul>
+        <li class="p"><b>Boarding-house owners in Naga City</b> who list rooms and run their houses on the app; they supply the listings students search.</li>
+        <li class="p"><b>Universities' student affairs or housing offices</b> at Ateneo de Naga, UNC, NCF and USI, to reach incoming students.</li>
+        <li class="p"><b>Licensed payment providers</b> such as GCash and Maya, for real rent payments (simulated in the prototype).</li>
+        <li class="p"><b>Food delivery services</b> such as GrabFood and foodpanda; today only links to their sites, a partner API is not configured.</li>
+        <li class="p"><b>Naga City government offices</b> for official waste schedules and flood hazard data.</li>
+        <li class="p"><b>Hosting and app store providers</b>: GitHub Pages today; Google Play and a server database for launch.</li>
+      </ul>
+      <span class="tag">Resources we cannot build alone</span><span class="tag">Risk reduction</span>
+    </section>
+
+    <!-- KEY ACTIVITIES -->
+    <section class="blk ka">
+      <div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="#173B63" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg><h2>Key Activities</h2></div>
+      <ul>
+        <li class="p">Build the planned <b>Android app and web app</b> from the prototype, with real accounts.</li>
+        <li><b>Review and verify listings</b>; moderate reported listings and reviews.</li>
+        <li class="p"><b>Onboard landlords</b> and keep rooms, rents and availability up to date.</li>
+        <li>Maintain the <b>bill-splitting formulas</b> and update CASURECO II and MNWD rates.</li>
+        <li class="p">User support, data privacy and security.</li>
+      </ul>
+      <span class="tag">Platform / network</span>
+    </section>
+
+    <!-- KEY RESOURCES -->
+    <section class="blk kr">
+      <div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="#173B63" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg><h2>Key Resources</h2></div>
+      <ul>
+        <li><b>Intellectual:</b> the BoardEasy software (listings, booking, billing engine, Rental Passport, parent access), its brand and design.</li>
+        <li><b>Data:</b> listing, tenancy and payment records (fictional in the prototype) and public utility rates.</li>
+        <li><b>Human:</b> the four-member project team.</li>
+        <li><b>Technical:</b> hosting now; servers, database and a payment gateway at launch.</li>
+        <li class="p"><b>Financial:</b> a proposed ₱35,000 seed grant for app launch and pilot.</li>
+      </ul>
+    </section>
+
+    <!-- VALUE PROPOSITIONS -->
+    <section class="blk vp">
+      <div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="#173B63" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="m8.5 13.5 2.5 2.5 4.5-5"/></svg><h2>Value Propositions</h2></div>
+      <p class="lede">One app for finding, renting and living in a boarding house.</p>
+      <div class="seg"><h3>For students and boarders</h3><ul>
+        <li>Compare rooms by rent, distance to campus, house rules, amenities and safety notes, then <b>request a booking</b> in the app.</li>
+        <li><b>See how every bill share was calculated</b>: readings, rate and formula; question any bill.</li>
+        <li>Receipts, room condition photos and deposits on record; a <b>Rental Passport</b> of on-time payments.</li>
+      </ul></div>
+      <div class="seg"><h3>For landlords</h3><ul>
+        <li>One dashboard for rooms, tenants, bookings, rent, deposits and announcements.</li>
+        <li><b>Fair electricity and water splitting</b> with a formula tenants can verify.</li>
+      </ul></div>
+      <div class="seg"><h3>For parents</h3><ul>
+        <li>See balances and receipts the student allows, and pay on their behalf.</li>
+      </ul></div>
+      <span class="tag">Convenience</span><span class="tag">Transparency</span><span class="tag">Risk reduction</span><span class="tag">Accessibility</span>
+    </section>
+
+    <!-- CUSTOMER RELATIONSHIPS -->
+    <section class="blk cr">
+      <div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="#173B63" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-9-9a4.8 4.8 0 0 1 9-3 4.8 4.8 0 0 1 9 3c-2 4.6-9 9-9 9z"/></svg><h2>Customer Relationships</h2></div>
+      <ul>
+        <li><b>Self-service:</b> each role works on its own dashboard.</li>
+        <li><b>Automated:</b> rent reminders, bill alerts and pickup reminders as prioritized notifications.</li>
+        <li><b>Community:</b> reviews labeled verified only after a recorded stay.</li>
+        <li><b>Guided:</b> a welcome guide for each role; landlords answer inquiries in the app.</li>
+      </ul>
+      <span class="tag">Low cost: mostly automated</span>
+    </section>
+
+    <!-- CHANNELS -->
+    <section class="blk ch">
+      <div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="#173B63" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><h2>Channels</h2></div>
+      <ul>
+        <li><b>Now:</b> the browser prototype on GitHub Pages, on phones and laptops.</li>
+        <li class="p"><b>Planned:</b> an Android app on Google Play and a web app.</li>
+        <li class="p">Campus orientations, student organizations and social media to reach students.</li>
+        <li class="p">Direct visits to boarding houses near the four campuses to sign up landlords.</li>
+      </ul>
+    </section>
+
+    <!-- CUSTOMER SEGMENTS -->
+    <section class="blk cs">
+      <div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="#173B63" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg><h2>Customer Segments</h2></div>
+      <p class="lede">A multi-sided platform for a niche, local market.</p>
+      <div class="seg"><h3>Students and boarders</h3><p>Students looking for or renting rooms near Ateneo de Naga University, University of Nueva Caceres, Naga College Foundation and Universidad de Sta. Isabel.</p></div>
+      <div class="seg"><h3>Landlords</h3><p>Owners and managers of boarding houses, dormitories, apartment-style rooms and bedspaces in Naga City barangays.</p></div>
+      <div class="seg"><h3>Parents and guardians</h3><p>Families who support a student's stay and want visibility of payments, with the student's permission.</p></div>
+      <div class="seg"><h3>Local service businesses</h3><p>Possible referral partners serving boarders (proposed).</p></div>
+      <div class="seg"><h3>Most important</h3><p>Students and landlords: each side brings the other. Landlords are the proposed paying segment; students and parents use it free.</p></div>
+      <span class="tag">Multi-sided platform</span><span class="tag">Niche: Naga City</span>
+    </section>
+
+    <!-- COST STRUCTURE -->
+    <section class="blk co">
+      <div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="#173B63" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 8h6M9 12h6M9 16h3"/></svg><h2>Cost Structure</h2></div>
+      <p class="lede">Lean and value-driven: automation keeps costs low. Proposed seed grant: ₱35,000 (app and cloud ₱12,000, verification and onboarding ₱10,500, data privacy review ₱6,000, operations ₱6,500).</p>
+      <div class="two">
+        <ul>
+          <li class="p"><b>Development:</b> building and maintaining the Android app and web app.</li>
+          <li class="p"><b>Infrastructure:</b> servers, database and storage (the prototype runs on free hosting).</li>
+          <li class="p"><b>Payment processing</b> fees once a real gateway is used.</li>
+        </ul>
+        <ul>
+          <li class="p"><b>App store</b> registration and publishing.</li>
+          <li class="p"><b>Operations:</b> listing verification, moderation and user support.</li>
+          <li class="p"><b>Marketing</b> and landlord onboarding; data privacy and security compliance.</li>
+        </ul>
+      </div>
+      <span class="tag">Fixed: hosting, upkeep</span><span class="tag">Variable: payment fees, support</span>
+    </section>
+
+    <!-- REVENUE STREAMS -->
+    <section class="blk rv">
+      <div class="h"><svg viewBox="0 0 24 24" fill="none" stroke="#173B63" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="9" cy="7" rx="6" ry="3"/><path d="M3 7v5c0 1.7 2.7 3 6 3s6-1.3 6-3V7M9 15v2c0 1.7 2.7 3 6 3s6-1.3 6-3v-5c0-1.7-2.7-3-6-3"/></svg><h2>Revenue Streams</h2></div>
+      <p class="lede">No revenue yet: BoardEasy is a prototype. Proposed streams below use the sample prices in the app's business simulation, which are untested assumptions.</p>
+      <div class="price">
+        <div><b>₱25</b><span>per listed room per month: landlord subscription</span></div>
+        <div><b>₱5</b><span>per successful in-app payment: transaction fee</span></div>
+        <div><b>₱500</b><span>per local service partner per month: referral or placement fee</span></div>
+      </div>
+      <ul>
+        <li class="p">Landlords pay for the management tools they use; no charge to students or parents is modeled.</li>
+        <li class="p">Fixed list prices; actual pricing to be validated with Naga City landlords before launch.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="key"><span><i class="e"></i>In the prototype today</span><span><i class="pp"></i>Proposed or planned</span></div>
+    <div>Based on the Business Model Canvas by Strategyzer (The Business Model Foundry), licensed CC BY-SA 3.0.</div>
+  </footer>
+</section>
+</body>
+</html>

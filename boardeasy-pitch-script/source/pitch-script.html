@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BoardEasy — Pitch Script</title>
+<style>
+@font-face{font-family:"Bricolage";src:url(fonts/BricolageGrotesque-Regular.ttf);font-weight:400}
+@font-face{font-family:"Bricolage";src:url(fonts/BricolageGrotesque-Bold.ttf);font-weight:700}
+@font-face{font-family:"Instrument";src:url(fonts/InstrumentSans-Regular.ttf);font-weight:400}
+@font-face{font-family:"Instrument";src:url(fonts/InstrumentSans-Italic.ttf);font-weight:400;font-style:italic}
+@font-face{font-family:"Instrument";src:url(fonts/InstrumentSans-Bold.ttf);font-weight:700}
+:root{--navy:#173B63;--ink:#1F2D3D;--ink2:#556578;--blue:#4EA5D9;--teal:#35B6A3;--teal-d:#1E8C7C;--rule:#D3DCE6;--fill:#FDF3DC;--fill-b:#E8A13A}
+@page{size:A4;margin:15mm 16mm 16mm}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Instrument","Inter",system-ui,sans-serif;color:var(--ink);font-size:10.3pt;line-height:1.46;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+h1,h2,h3{font-family:"Bricolage","Inter",sans-serif;font-weight:700;color:var(--navy);letter-spacing:-.015em;line-height:1.1}
+.top{display:flex;align-items:center;gap:4mm;padding-bottom:4mm;border-bottom:1.2pt solid var(--navy)}
+.top svg{width:13mm;height:13mm;flex:none}
+.top h1{font-size:23pt}
+.top .sub{font-family:"Bricolage","Inter",sans-serif;font-size:10pt;color:var(--teal-d);margin-top:1mm}
+.intro{display:grid;grid-template-columns:1fr 62mm;column-gap:8mm;margin:4.5mm 0 3mm}
+.intro p{font-size:9.6pt;color:var(--ink2)}
+.legend{font-size:8.6pt;color:var(--ink2);line-height:1.45}
+.legend .ph{font-size:8.6pt}
+/* timeline */
+.tl{display:flex;height:6.5mm;margin:3mm 0 1mm;border:.6pt solid var(--navy)}
+.tl span{display:flex;align-items:center;justify-content:center;font-family:"Bricolage","Inter",sans-serif;font-weight:700;font-size:7pt;color:#fff;border-right:.6pt solid #fff}
+.tl span:nth-child(odd){background:var(--navy)}
+.tl span:nth-child(even){background:#2C5D8F}
+.tl span:last-child{border-right:0}
+.tlx{display:flex;justify-content:space-between;font-size:7.4pt;color:var(--ink2);margin-bottom:5mm}
+/* slides */
+.slide{display:grid;grid-template-columns:24mm 1fr;column-gap:6mm;padding:3mm 0 3.2mm;border-top:.6pt solid var(--rule);break-inside:avoid}
+.num{font-family:"Bricolage","Inter",sans-serif}
+.num b{display:block;font-size:22pt;line-height:1;color:var(--teal-d);font-weight:700}
+.num span{display:block;font-size:8.4pt;color:var(--ink2);margin-top:1.2mm}
+.num i{display:block;font-style:normal;font-size:8pt;color:var(--navy);font-weight:700;margin-top:.4mm}
+.slide h2{font-size:13pt;margin-bottom:1.6mm}
+.say p{margin-bottom:1.6mm}
+.say p:last-child{margin-bottom:0}
+.cue{font-style:italic;color:var(--ink2)}
+.ph{background:var(--fill);border-bottom:1pt solid var(--fill-b);padding:0 .8mm;font-weight:700;color:#7A4E0B;font-size:9.8pt}
+.note{margin-top:2mm;font-size:8.6pt;color:var(--ink2);border-left:2pt solid var(--teal);padding-left:2.6mm}
+.tips{margin-top:5mm;padding:4.5mm 5mm;background:#EEF3F8;break-inside:avoid}
+.tips h3{font-size:12pt;margin-bottom:2mm}
+.tips ul{padding-left:4.5mm;font-size:9.6pt}
+.tips li{margin-bottom:1.2mm}
+</style>
+</head>
+<body>
+<header class="top">
+  <svg viewBox="0 0 40 40" aria-label="BoardEasy logo"><rect width="40" height="40" rx="11" fill="#173B63"/><path d="M10 19.5 20 11l10 8.5V29a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 10 29z" fill="#fff"/><path d="m15.5 22 3.3 3.3 6.2-6.6" stroke="#35B6A3" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div><h1>BoardEasy pitch script</h1><div class="sub">13 slides, under 6 minutes, for presenting the startup to a panel</div></div>
+</header>
+
+<div class="intro">
+  <p>Read the text under each slide aloud; it is written to be spoken at a normal pace (about 800 words, roughly 5 minutes 45 seconds). Times are targets, not rules. Lines in italics are stage cues, not things to say.</p>
+  <div class="legend"><span class="ph">[highlighted]</span> = information to fill in before presenting: statistics, budget, roles and mentor. Use real, sourced figures only; the panel will ask where they came from.</div>
+</div>
+
+<div class="tl" aria-label="Time per slide">
+  <span style="flex:25">1</span><span style="flex:40">2</span><span style="flex:20">3</span><span style="flex:40">4</span><span style="flex:25">5</span><span style="flex:30">6</span><span style="flex:30">7</span><span style="flex:25">8</span><span style="flex:30">9</span><span style="flex:30">10</span><span style="flex:15">11</span><span style="flex:15">12</span><span style="flex:20">13</span>
+</div>
+<div class="tlx"><span>0:00</span><span>1:30</span><span>3:00</span><span>4:30</span><span>5:45</span></div>
+
+<section class="slide"><div class="num"><b>01</b><span>0:00 to 0:25</span><i>25 seconds</i></div><div class="say">
+  <h2>Title slide</h2>
+  <p>"Good <span class="ph">[morning]</span>, panel. We are <b>BoardEasy</b>: <i>Your Boarding House, Made Easier.</i> We're a student-housing startup for Naga City, building one app that connects students, landlords and parents. Our team is Kyle S. Loquinario, our <span class="ph">[role]</span>; Neina Faith B. Sallan, our <span class="ph">[role]</span>; Elijah Daine C. Camba, our <span class="ph">[role]</span>; and Kimberly E. Cabrea, our <span class="ph">[role]</span>."</p>
+</div></section>
+
+<section class="slide"><div class="num"><b>02</b><span>0:25 to 1:05</span><i>40 seconds</i></div><div class="say">
+  <h2>Problem statement</h2>
+  <p>"Naga City is a university city. Ateneo de Naga alone has around 7,600 students, yet for school year 2026&ndash;2027 it accredited only 19 boarding houses and dormitories. Most rooms students rent are on no official list, and a 1982 city ordinance requiring boarders to register still has no digital system.</p>
+  <p>So renting runs on scattered posts, notebooks and group chats. Students can't compare rent, rules or safety. Tenants sharing one meter can't check their bill. Receipts and deposits get lost, parents can't see what's due, and landlords track it all by hand."</p>
+  <p class="note">Sources: Times Higher Education, Ateneo de Naga University profile (about 7,600 students); Ateneo de Naga University, "ADNU Fosters Safe, Supportive Spaces through ABHD Service," July 2026 (19 accredited for SY 2026&ndash;2027); City of Naga Ordinance No. 1982-813 (boarder registration). Put these on the slide in small print.</p>
+</div></section>
+
+<section class="slide"><div class="num"><b>03</b><span>1:05 to 1:25</span><i>20 seconds</i></div><div class="say">
+  <h2>Solution</h2>
+  <p>"BoardEasy puts that whole cycle in one app. Students search, compare and book rooms. Landlords manage rooms, tenants, rent and deposits. Monthly bills are split by a formula everyone can see. And parents follow payments only with the student's permission. One shared record replaces guesswork."</p>
+</div></section>
+
+<section class="slide"><div class="num"><b>04</b><span>1:25 to 2:05</span><i>40 seconds</i></div><div class="say">
+  <h2>Innovation and features</h2>
+  <p>"Three features set us apart. First, <b>transparent bill splitting</b>: every electricity or water share shows the meter readings, the real CASURECO II or Metro Naga Water District rate, and the formula, and tenants can question any bill.</p>
+  <p>Second, <b>permission-based parent access</b>: the student decides exactly what each parent sees. Third, the <b>Rental Passport</b>: on-time payments become a record for future landlords.</p>
+  <p>Our prototype runs in the browser, built with HTML, CSS and JavaScript, and we're developing it into an Android app and a web app. Other apps either list rooms or collect rent. BoardEasy does both, and adds parents."</p>
+  <p class="note">BoardEasy is software only. Leave out the template's IoT and ESP32 examples.</p>
+</div></section>
+
+<section class="slide"><div class="num"><b>05</b><span>2:05 to 2:30</span><i>25 seconds</i></div><div class="say">
+  <h2>Target market</h2>
+  <p>"We serve a multi-sided market in Naga City. Students and boarders near the four campuses are our users. Boarding-house owners, from bedspaces to dormitories, are our paying customers. Parents and guardians are a key third group. We also work with schools' student affairs offices and the city government, who care about safe, fairly priced student housing."</p>
+</div></section>
+
+<section class="slide"><div class="num"><b>06</b><span>2:30 to 3:00</span><i>30 seconds</i></div><div class="say">
+  <h2>Business model</h2>
+  <p>"Following Harvard Business School's business model types, BoardEasy is a <b>multi-sided platform</b> with a <b>freemium</b> approach. Students and parents use it free. Landlords pay a <b>subscription</b>: our working estimate is ₱25 per room per month. We'd add a small <b>transaction fee</b>, estimated at ₱5 per in-app payment, and <b>referral fees</b> from local service partners. These are starting assumptions, and we'll validate them with Naga landlords during the pilot."</p>
+</div></section>
+
+<section class="slide"><div class="num"><b>07</b><span>3:00 to 3:30</span><i>30 seconds</i></div><div class="say">
+  <h2>Prototype design</h2>
+  <p>"This is our working prototype. <span class="cue">(Point to the screens.)</span> Here's the student home, the bill breakdown with its meter readings, and the landlord dashboard, which ranks tasks by urgency. Behind them, four role dashboards share one set of records: a booking from a student appears instantly as a request for the landlord. The prototype passes all 38 of its built-in checks. Payments and GPS are simulated for now, and every simulated step is labeled on screen."</p>
+  <p class="note">If you can, show the bill breakdown live. It is the strongest moment of the pitch.</p>
+</div></section>
+
+<section class="slide"><div class="num"><b>08</b><span>3:30 to 3:55</span><i>25 seconds</i></div><div class="say">
+  <h2>Asking / proposed fund</h2>
+  <p>"We're requesting a <b>₱35,000 seed grant</b>. <b>₱12,000</b> for app and cloud setup, including our Android app on Google Play and secure login. <b>₱10,500</b> for site inspections, QR room tags and onboarding 25 pilot boarding houses. <b>₱6,000</b> for a Data Privacy Act review, since some users are minors. And <b>₱6,500</b> for operations during the three-month pilot."</p>
+  <p class="note">Show the percentages (34%, 30%, 17%, 19%) on the slide instead of saying them. Payments are recorded manually during the pilot; a licensed gateway comes later, once the business is registered.</p>
+</div></section>
+
+<section class="slide"><div class="num"><b>09</b><span>3:55 to 4:25</span><i>30 seconds</i></div><div class="say">
+  <h2>Implementation strategy</h2>
+  <p>"Our roadmap runs 12 months. <b>Months 1 to 3:</b> we move to an encrypted cloud database with secure login and launch an Android beta. <b>Months 4 to 6:</b> we pilot with 25 boarding houses, about 150 rooms, near CSNHS, Ateneo de Naga and UNC, measuring bill disputes and on-time payments. <b>Months 7 to 12:</b> we work with the city's business permits and solid waste offices to expand across all 27 barangays."</p>
+  <p class="note">Confirm the exact names of the two city offices (BPLO and SWMO) before presenting.</p>
+</div></section>
+
+<section class="slide"><div class="num"><b>10</b><span>4:25 to 4:55</span><i>30 seconds</i></div><div class="say">
+  <h2>Target beneficiaries and key partners</h2>
+  <p>"Students gain transparency and safety. Landlords save time and get fewer disputes. Parents gain peace of mind. The partners we're seeking are the <b>Naga City LGU</b>, for the pilot and official data like waste schedules and hazard maps; <b>DOST</b>, for technology support; a <b>TBI incubator</b>, for mentoring and seed funding; and the campuses, to reach incoming students. None of these partnerships is formalized yet; this is who we're approaching."</p>
+</div></section>
+
+<section class="slide"><div class="num"><b>11</b><span>4:55 to 5:10</span><i>15 seconds</i></div><div class="say">
+  <h2>Team composition</h2>
+  <p>"Our team covers what this needs. <span class="ph">[Name]</span> is our project lead; <span class="ph">[name]</span>, our full-stack developer; <span class="ph">[name]</span>, our UI/UX and front-end developer; and <span class="ph">[name]</span>, <span class="ph">[role]</span>. We're guided by <span class="ph">[mentor name and title]</span>."</p>
+</div></section>
+
+<section class="slide"><div class="num"><b>12</b><span>5:10 to 5:25</span><i>15 seconds</i></div><div class="say">
+  <h2>Call to action</h2>
+  <p>"Today we're asking for two things: <b>approval to run an LGU pilot</b> with boarding houses in Naga City, and a <b>seed grant of ₱35,000</b> to take BoardEasy from prototype to a real app in students' hands."</p>
+</div></section>
+
+<section class="slide"><div class="num"><b>13</b><span>5:25 to 5:45</span><i>20 seconds</i></div><div class="say">
+  <h2>Business model canvas and close</h2>
+  <p>"Our Business Model Canvas brings it together. We create value for students, landlords and parents, reach them through campuses and the app, and earn from landlord subscriptions and transaction fees, at lean, automation-driven costs. BoardEasy: your boarding house, made easier. Thank you!"</p>
+</div></section>
+
+<aside class="tips">
+  <h3>Before you present</h3>
+  <ul>
+    <li>Fill in every highlighted item, and open the three source links on Slide 2 once yourselves to confirm the figures.</li>
+    <li>Rehearse with a timer. The script leaves about 15 seconds of slack for pauses and slide changes; if you still run long, trim slides 2 and 4 first.</li>
+    <li>Decide who speaks each slide and hand over at slide boundaries, not mid-slide.</li>
+    <li>Be ready for "Is it live?" The honest answer: a working browser prototype with demo data; real payments, accounts and the Android app come next.</li>
+  </ul>
+</aside>
+</body>
+</html>
