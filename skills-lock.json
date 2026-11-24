@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "skills": {
+    "frontend-design": {
+      "source": "vercel-labs/agent-eval",
+      "commit": "9ff2ea3e9f14c14e5123b215c3f695d3b4f9955d",
+      "sourceType": "github",
+      "skillPath": "packages/playground/.agents/skills/frontend-design/SKILL.md",
+      "computedHash": "a7c81a25c7ea1972f7049cd0282545c72ae92237c1b45ba7b1370fab498f5f9b",
+      "installMode": "copy"
+    }
+  }
+}
