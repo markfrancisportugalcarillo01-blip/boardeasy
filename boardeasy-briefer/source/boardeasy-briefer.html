@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BoardEasy — Project Briefer</title>
+<style>
+@font-face{font-family:"Bricolage";src:url(fonts/BricolageGrotesque-Regular.ttf);font-weight:400}
+@font-face{font-family:"Bricolage";src:url(fonts/BricolageGrotesque-Bold.ttf);font-weight:700}
+@font-face{font-family:"Instrument";src:url(fonts/InstrumentSans-Regular.ttf);font-weight:400}
+@font-face{font-family:"Instrument";src:url(fonts/InstrumentSans-Italic.ttf);font-weight:400;font-style:italic}
+@font-face{font-family:"Instrument";src:url(fonts/InstrumentSans-Bold.ttf);font-weight:700}
+:root{
+  --navy:#173B63;   /* BoardEasy brand navy */
+  --ink:#1F2D3D;    /* text */
+  --ink2:#556578;   /* secondary text */
+  --blue:#4EA5D9;   /* brand blue: simulated */
+  --blue-d:#2C7DB0;
+  --teal:#35B6A3;   /* brand teal */
+  --teal-d:#1E8C7C; /* teal for text on white */
+  --soft:#EEF3F8;
+  --rule:#D3DCE6;
+}
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#cfd6de}
+body{font-family:"Instrument","Inter",system-ui,sans-serif;color:var(--ink);font-size:8.9pt;line-height:1.42;-webkit-print-color-adjust:exact;print-color-adjust:exact;font-variant-numeric:lining-nums tabular-nums}
+.page{width:210mm;height:297mm;background:#fff;margin:0 auto;position:relative;overflow:hidden;padding:12mm 14mm 12mm;break-after:page;display:flex;flex-direction:column}
+.page:last-child{break-after:auto}
+@media screen{.page{margin:8mm auto;box-shadow:0 1px 6px rgba(0,0,0,.15)}}
+h1,h2,h3,h4{font-family:"Bricolage","Inter",sans-serif;font-weight:700;letter-spacing:-.012em;line-height:1.12;color:var(--navy)}
+h2{font-size:19pt;letter-spacing:-.025em}
+h3{font-size:10.6pt;margin-bottom:1.4mm}
+h4{font-size:9pt;margin-bottom:.6mm}
+p+p{margin-top:1.5mm}
+b{font-weight:700}
+.cap{font-size:7.4pt;line-height:1.38;color:var(--ink2)}
+.sec{border-top:.6pt solid var(--rule);padding-top:3.2mm;margin-top:4.2mm}
+.folio{position:absolute;left:14mm;right:14mm;bottom:6.5mm;display:flex;justify-content:space-between;font-size:7.2pt;color:var(--ink2)}
+.folio b{color:var(--navy)}
+
+/* status key: shape + color, never color alone */
+.k{display:inline-block;width:2.6mm;height:2.6mm;vertical-align:-.25mm;margin-right:1.2mm;flex:none}
+.k.work{background:var(--navy)}
+.k.sim{background:repeating-linear-gradient(135deg,var(--blue) 0 .45mm,#fff .45mm .9mm);outline:.5pt solid var(--blue);outline-offset:-.5pt}
+.k.ext{border:.9pt solid var(--teal-d);border-radius:50%}
+.legend{display:flex;gap:5mm;flex-wrap:wrap;font-size:7.6pt;color:var(--ink2)}
+
+/* ---------------- page 1 ---------------- */
+.id{display:grid;grid-template-columns:1fr 58mm;column-gap:9mm}
+.brand{display:flex;align-items:center;gap:4mm}
+.brand svg{width:17mm;height:17mm;flex:none}
+.brand h1{font-size:44pt;letter-spacing:-.04em;line-height:.9}
+.tagline{font-family:"Bricolage","Inter",sans-serif;font-size:11pt;color:var(--teal-d);margin-top:1.5mm}
+.descr{font-family:"Bricolage","Inter",sans-serif;font-size:13pt;line-height:1.26;margin-top:5mm;max-width:118mm;color:var(--ink)}
+.facts{border-left:1.4pt solid var(--navy);padding-left:4mm;align-self:start;margin-top:1mm}
+.facts h4{color:var(--teal-d);font-size:8.2pt}
+.facts ol{list-style:none;font-size:9.6pt;line-height:1.55;margin-bottom:3mm;font-weight:700;color:var(--navy)}
+.facts dl{display:grid;grid-template-columns:15mm 1fr;row-gap:.9mm;font-size:7.8pt;line-height:1.3}
+.facts dt{color:var(--ink2)}
+.facts dd{word-break:break-word}
+.p1-mid{display:grid;grid-template-columns:84mm 1fr;column-gap:8mm;margin-top:6mm}
+.why .item{display:grid;grid-template-columns:4mm 1fr;column-gap:2mm;padding:2.1mm 0;border-top:.5pt solid var(--rule)}
+.why .item:first-of-type{border-top:0;padding-top:0}
+.why .item::before{content:"";width:2mm;height:2mm;background:var(--teal);margin-top:1.4mm}
+.why .item b{font-family:"Bricolage","Inter",sans-serif;color:var(--navy);font-size:9.3pt;display:block;margin-bottom:.3mm}
+.note-premise{margin-top:2mm}
+.hub svg{display:block;width:100%;height:auto}
+.p1-foot{display:grid;grid-template-columns:84mm 1fr;column-gap:8mm;margin-top:auto;padding-top:3.4mm;border-top:.6pt solid var(--rule)}
+.objs{list-style:none;counter-reset:o}
+.objs li{counter-increment:o;display:grid;grid-template-columns:5mm 1fr;padding:.75mm 0;line-height:1.36}
+.objs li::before{content:counter(o);font-family:"Bricolage","Inter",sans-serif;font-weight:700;color:var(--teal-d)}
+.ctx p{line-height:1.4}
+.campus{display:grid;grid-template-columns:1fr 1fr;gap:1.2mm 4mm;margin:2mm 0 2mm;font-family:"Bricolage","Inter",sans-serif;font-size:8.6pt;color:var(--navy)}
+.campus span{border-bottom:.5pt solid var(--rule);padding-bottom:.8mm}
+
+/* ---------------- page 2 ---------------- */
+.p2-head{display:grid;grid-template-columns:70mm 1fr;column-gap:8mm;align-items:end}
+.flow svg{display:block;width:100%;height:auto;margin-top:2mm}
+.p2-mid{display:grid;grid-template-columns:1fr 54mm;column-gap:7mm}
+.phones{display:grid;grid-template-columns:repeat(3,1fr);column-gap:5mm}
+.phone{margin:0}
+.phone .scr{border:1.2pt solid var(--navy);border-radius:4mm;overflow:hidden;height:74mm;background:#fff}
+.phone img{display:block;width:100%;height:auto}
+.phone figcaption{margin-top:1.4mm}
+.phone figcaption b{display:block;font-family:"Bricolage","Inter",sans-serif;color:var(--navy);font-size:8.4pt;font-weight:700}
+.stack h3{margin-bottom:1.2mm}
+.stack dl{font-size:8.1pt;line-height:1.34}
+.stack dt{font-family:"Bricolage","Inter",sans-serif;font-weight:700;color:var(--navy);font-size:8.4pt;margin-top:1.5mm}
+.stack dt:first-child{margin-top:0}
+.matrix table{width:100%;border-collapse:collapse;margin-top:1.4mm;table-layout:fixed}
+.matrix th{font-family:"Bricolage","Inter",sans-serif;font-size:7.4pt;color:var(--ink2);font-weight:700;text-align:left;padding:0 1.5mm 1.2mm;border-bottom:1pt solid var(--navy)}
+.matrix th.r,.matrix td.r{text-align:center;width:12mm;padding-left:.3mm;padding-right:.3mm}
+.matrix td{padding:1.15mm 1.5mm;border-bottom:.5pt solid var(--rule);font-size:7.95pt;line-height:1.3;vertical-align:middle}
+.matrix td:first-child{font-family:"Bricolage","Inter",sans-serif;font-weight:700;color:var(--navy);font-size:8.3pt;width:38mm;white-space:nowrap}
+.matrix td:nth-child(2){white-space:nowrap}
+.matrix td.st{white-space:nowrap;width:31mm;font-size:7.5pt;padding-right:0}
+.matrix tr:last-child td{border-bottom:0}
+.dot{display:inline-block;width:2.4mm;height:2.4mm;border-radius:50%;background:var(--navy)}
+.dot.o{background:#fff;border:.8pt solid var(--navy)}
+
+/* ---------------- page 3 ---------------- */
+.p3-head{display:grid;grid-template-columns:70mm 1fr;column-gap:8mm;align-items:end}
+.roles{display:grid;grid-template-columns:repeat(4,1fr);column-gap:5mm;margin-top:4mm}
+.role{border-top:2.4pt solid var(--navy);padding-top:2mm}
+.role:nth-child(2){border-top-color:var(--blue)}
+.role:nth-child(3){border-top-color:var(--teal)}
+.role:nth-child(4){border-top-color:var(--ink2)}
+.role h3{font-size:10.4pt;margin-bottom:1mm}
+.role ul{list-style:none}
+.role li{padding:.9mm 0;border-bottom:.5pt solid var(--rule);font-size:8.5pt;line-height:1.34}
+.role li:last-child{border-bottom:0}
+.p3-mid{display:grid;grid-template-columns:96mm 1fr;column-gap:8mm}
+.bill svg{display:block;width:100%;height:auto;margin-top:1mm}
+.feas .f{padding:1.3mm 0;border-bottom:.5pt solid var(--rule);font-size:8.4pt;line-height:1.36}
+.feas .f:last-child{border-bottom:0}
+.feas .f b{font-family:"Bricolage","Inter",sans-serif;color:var(--navy);display:block;font-size:8.9pt}
+.bounds table{width:100%;border-collapse:collapse;margin-top:1.2mm;table-layout:fixed}
+.bounds th{font-family:"Bricolage","Inter",sans-serif;font-size:8.2pt;text-align:left;padding:0 2mm 1.2mm 0;border-bottom:1pt solid var(--navy);color:var(--navy)}
+.bounds td{padding:1.8mm 2mm 1.8mm 0;border-bottom:.5pt solid var(--rule);font-size:8.1pt;line-height:1.3;vertical-align:top}
+.bounds td:first-child{font-family:"Bricolage","Inter",sans-serif;font-weight:700;color:var(--navy);width:30mm}
+.bounds tr:last-child td{border-bottom:0}
+.close{margin-top:auto;background:var(--navy);color:#fff;padding:4.6mm 6mm;display:grid;grid-template-columns:1fr 60mm;column-gap:7mm;align-items:start}
+.close .stmt{font-family:"Bricolage","Inter",sans-serif;font-size:11.6pt;line-height:1.3}
+.close dl{font-size:7.3pt;line-height:1.35;color:#C9D8E8}
+.close dt{font-family:"Bricolage","Inter",sans-serif;font-weight:700;color:#8FD3C8;margin-top:1.6mm}
+.close dt:first-child{margin-top:0}
+.close dd{color:#fff}
+#p3 .sec{margin-top:6mm;padding-top:4mm}
+#p1 .p1-foot{margin-top:auto}
+</style>
+</head>
+<body>
+
+<!-- =============================== PAGE 1 =============================== -->
+<section class="page" id="p1">
+  <div class="id">
+    <div>
+      <div class="brand">
+        <svg viewBox="0 0 40 40" aria-label="BoardEasy logo"><rect width="40" height="40" rx="11" fill="#173B63"/><path d="M10 19.5 20 11l10 8.5V29a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 10 29z" fill="#fff"/><path d="m15.5 22 3.3 3.3 6.2-6.6" stroke="#35B6A3" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><h1>BoardEasy</h1><div class="tagline">Your Boarding House, Made Easier.</div></div>
+      </div>
+      <p class="descr">A boarding-house discovery and management app that brings students, landlords and parents in Naga City, Philippines onto one platform: finding a room, booking it, paying rent and splitting utility bills fairly, and keeping every record in one place.</p>
+    </div>
+    <aside class="facts">
+      <h4>Proponents</h4>
+      <ol>
+        <li>Kyle S. Loquinario</li>
+        <li>Neina Faith B. Sallan</li>
+        <li>Elijah Daine C. Camba</li>
+        <li>Kimberly E. Cabrea</li>
+      </ol>
+      <dl>
+        <dt>Type</dt><dd>Web application (phones and laptops)</dd>
+        <dt>Setting</dt><dd>Naga City, Camarines Sur</dd>
+        <dt>Stage</dt><dd>Working demo with simulated data</dd>
+        <dt>Version</dt><dd>1.0.0</dd>
+      </dl>
+    </aside>
+  </div>
+
+  <div class="p1-mid">
+    <div class="why">
+      <h2 style="margin-bottom:3mm">Why BoardEasy</h2>
+      <div class="item"><div><b>Room hunting is scattered</b>Rent, distance to campus, house rules, curfews and safety notes usually have to be gathered from different places before a student can compare options.</div></div>
+      <div class="item"><div><b>Shared meters are hard to split</b>When several tenants share one electricity meter, it is hard for them to see how their share was worked out, or to question it.</div></div>
+      <div class="item"><div><b>Records live on paper</b>Receipts, deposits and the condition of a room at move-in are easy to lose, which makes refunds and disagreements harder to settle.</div></div>
+      <div class="item"><div><b>Parents are far away</b>Families who help pay for a student's room have little visibility of balances and receipts unless the student shares them.</div></div>
+      <div class="item"><div><b>Landlords juggle it all by hand</b>Rent, vacancies, bookings, announcements and bills are tracked separately, often in notebooks and chat threads.</div></div>
+      <p class="cap note-premise">These are the design premises the app is built around, not findings from a survey.</p>
+    </div>
+
+    <div class="hub">
+      <h3>One platform, four roles</h3>
+      <svg viewBox="0 0 92 106" font-family="Instrument, Inter, sans-serif" aria-label="How the four roles connect through BoardEasy">
+        <style>.rn{font-family:Bricolage,Inter,sans-serif;font-weight:700;font-size:3.7px}.rs{font-size:2.75px;fill:#556578}.fl{font-size:2.55px;fill:#1F2D3D}</style>
+        <g stroke="#D3DCE6" stroke-width=".5" fill="none">
+          <line x1="46" y1="52" x2="16" y2="26"/><line x1="46" y1="52" x2="76" y2="26"/><line x1="46" y1="52" x2="16" y2="78"/><line x1="46" y1="52" x2="76" y2="78"/>
+        </g>
+        <g stroke="#173B63" stroke-width=".45" stroke-dasharray="1 .8" fill="none">
+          <line x1="26.5" y1="26" x2="65.5" y2="26"/><line x1="16" y1="36.5" x2="16" y2="67.5"/><line x1="76" y1="36.5" x2="76" y2="67.5"/>
+        </g>
+        <circle cx="46" cy="52" r="14" fill="#173B63"/>
+        <g transform="translate(39.6 39.2) scale(.32)"><path d="M10 19.5 20 11l10 8.5V29a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 10 29z" fill="#fff"/><path d="m15.5 22 3.3 3.3 6.2-6.6" stroke="#35B6A3" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <text x="46" y="56.2" text-anchor="middle" style="font-family:Bricolage,Inter,sans-serif;font-weight:700;font-size:3.7px;fill:#fff">BoardEasy</text>
+        <text x="46" y="59.9" text-anchor="middle" style="font-size:2.45px;fill:#BFD2E6">shared records</text>
+        <circle cx="16" cy="26" r="10.5" fill="#fff" stroke="#173B63" stroke-width=".7"/><text class="rn" x="16" y="27.4" text-anchor="middle" fill="#173B63">Student</text>
+        <circle cx="76" cy="26" r="10.5" fill="#fff" stroke="#4EA5D9" stroke-width=".7"/><text class="rn" x="76" y="27.4" text-anchor="middle" fill="#2C7DB0">Landlord</text>
+        <circle cx="16" cy="78" r="10.5" fill="#fff" stroke="#35B6A3" stroke-width=".7"/><text class="rn" x="16" y="79.4" text-anchor="middle" fill="#1E8C7C">Parent</text>
+        <circle cx="76" cy="78" r="10.5" fill="#fff" stroke="#556578" stroke-width=".7"/><text class="rn" x="76" y="79.4" text-anchor="middle" fill="#556578">Admin</text>
+        <text class="rs" x="1" y="8.4">Searches, books, pays</text><text class="rs" x="1" y="11.8">and checks bill shares</text>
+        <text class="rs" x="91" y="8.4" text-anchor="end">Lists rooms, tracks rent,</text><text class="rs" x="91" y="11.8" text-anchor="end">records bills and deposits</text>
+        <text class="rs" x="1" y="94.4">Sees what the student</text><text class="rs" x="1" y="97.8">allows; can pay for them</text>
+        <text class="rs" x="91" y="94.4" text-anchor="end">Approves listings,</text><text class="rs" x="91" y="97.8" text-anchor="end">moderates reviews</text>
+        <rect x="32" y="20.4" width="28" height="11.2" fill="#EEF3F8"/>
+        <text class="fl" x="46" y="24.4" text-anchor="middle">bookings, rent, bills,</text><text class="fl" x="46" y="27.4" text-anchor="middle">room reports,</text><text class="fl" x="46" y="30.4" text-anchor="middle">bill questions</text>
+        <rect x="3" y="46" width="26" height="12.4" fill="#EEF3F8"/>
+        <text class="fl" x="16" y="50" text-anchor="middle">invite code and</text><text class="fl" x="16" y="53" text-anchor="middle">permissions the</text><text class="fl" x="16" y="56" text-anchor="middle">student controls</text>
+        <rect x="63" y="46" width="26" height="12.4" fill="#EEF3F8"/>
+        <text class="fl" x="76" y="50" text-anchor="middle">listing review;</text><text class="fl" x="76" y="53" text-anchor="middle">reports from</text><text class="fl" x="76" y="56" text-anchor="middle">every user</text>
+        <text class="rs" x="46" y="104.6" text-anchor="middle">Every action notifies the people it affects, inside the app.</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="p1-foot">
+    <div>
+      <h3>Objectives</h3>
+      <ol class="objs">
+        <li>Help students compare boarding houses by price, distance to campus, rules, amenities and safety notes, then request a room in the app.</li>
+        <li>Give landlords one place to manage rooms, tenants, bookings, rent, deposits and announcements.</li>
+        <li>Make shared electricity and water bills transparent: every share shows its readings, rate and formula.</li>
+        <li>Keep receipts, room condition reports and deposits on record, and turn on-time payments into a portable Rental Passport.</li>
+        <li>Let parents follow payments only with the student's permission.</li>
+      </ol>
+    </div>
+    <div class="ctx">
+      <h3>Built for Naga City</h3>
+      <p>The app is set in real Naga City barangays around four real campuses, and it calculates bills with real local utility rates.</p>
+      <div class="campus"><span>Ateneo de Naga University</span><span>University of Nueva Caceres</span><span>Naga College Foundation</span><span>Universidad de Sta. Isabel</span></div>
+      <p class="cap">Electricity: CASURECO II residential rate, ₱11.17/kWh (October 2026). Water: Metro Naga Water District residential rates (2026). Rents are estimates from public listings. All boarding houses, people and transactions in the demo are fictional.</p>
+    </div>
+  </div>
+  <div class="folio"><span><b>BoardEasy</b> project briefer</span><span>Page 1 of 3: Overview and rationale</span></div>
+</section>
+
+<!-- =============================== PAGE 2 =============================== -->
+<section class="page" id="p2">
+  <div class="p2-head">
+    <h2>How BoardEasy works</h2>
+    <p>Each role sees its own screens, but they all read and write the same records. A booking a student sends becomes a request on the landlord's dashboard; a bill the landlord records becomes a charge on the tenant's account and, with permission, a line on the parent's view.</p>
+  </div>
+
+  <div class="flow">
+    <svg viewBox="0 0 182 47" font-family="Instrument, Inter, sans-serif" aria-label="Student journey from search to receipt">
+      <style>.sn{font-family:Bricolage,Inter,sans-serif;font-weight:700;font-size:3.3px;fill:#173B63}.sd{font-size:2.5px;fill:#556578}.who{font-size:2.35px;font-weight:700}</style>
+      <line x1="2.6" y1="11" x2="159" y2="11" stroke="#173B63" stroke-width=".5"/>
+      <circle cx="2.6" cy="11" r="2.4" fill="#173B63"/><text class="who" x="1.0" y="5" fill="#173B63">Student</text><text class="sn" x="1.0" y="19">Search</text><text class="sd" x="1.0" y="23.00">Filter by rent,</text><text class="sd" x="1.0" y="25.95">campus, amenities,</text><text class="sd" x="1.0" y="28.90">rules, flood label</text><circle cx="28.7" cy="11" r="2.4" fill="#173B63"/><text class="who" x="27.1" y="5" fill="#173B63">Student</text><text class="sn" x="27.1" y="19">Request</text><text class="sd" x="27.1" y="23.00">Choose a room and</text><text class="sd" x="27.1" y="25.95">move-in date, or</text><text class="sd" x="27.1" y="28.90">send an inquiry</text><circle cx="54.8" cy="11" r="2.4" fill="#4EA5D9"/><text class="who" x="53.2" y="5" fill="#2C7DB0">Landlord</text><text class="sn" x="53.2" y="19">Approve</text><text class="sd" x="53.2" y="23.00">The room is marked</text><text class="sd" x="53.2" y="25.95">reserved for the</text><text class="sd" x="53.2" y="28.90">student</text><circle cx="80.9" cy="11" r="2.4" fill="#4EA5D9"/><text class="who" x="79.3" y="5" fill="#2C7DB0">Landlord</text><text class="sn" x="79.3" y="19">Check in</text><text class="sd" x="79.3" y="23.00">Creates tenancy,</text><text class="sd" x="79.3" y="25.95">rent, deposit and</text><text class="sd" x="79.3" y="28.90">move-in report</text><circle cx="107.0" cy="11" r="2.4" fill="#4EA5D9"/><text class="who" x="105.4" y="5" fill="#2C7DB0">Landlord, monthly</text><text class="sn" x="105.4" y="19">Record bills</text><text class="sd" x="105.4" y="23.00">Meter readings are</text><text class="sd" x="105.4" y="25.95">split into each</text><text class="sd" x="105.4" y="28.90">tenant's share</text><circle cx="133.1" cy="11" r="2.4" fill="#173B63"/><text class="who" x="131.5" y="5" fill="#173B63">Student or parent</text><text class="sn" x="131.5" y="19">Pay</text><text class="sd" x="131.5" y="23.00">GCash, Maya, wallet</text><text class="sd" x="131.5" y="25.95">or manual, all</text><text class="sd" x="131.5" y="28.90">simulated in demo</text><circle cx="159.2" cy="11" r="2.4" fill="#35B6A3"/><text class="who" x="157.6" y="5" fill="#1E8C7C">Everyone</text><text class="sn" x="157.6" y="19">Record</text><text class="sd" x="157.6" y="23.00">Receipt issued,</text><text class="sd" x="157.6" y="25.95">passport updated,</text><text class="sd" x="157.6" y="28.90">landlord and parent</text><text class="sd" x="157.6" y="31.85">notified</text>
+      <rect x="0" y="34" width="182" height="13" fill="#EEF3F8"/>
+      <text x="2.5" y="38.2" style="font-family:Bricolage,Inter,sans-serif;font-weight:700;font-size:2.9px;fill:#173B63">Along the way</text>
+      <text class="sd" x="2.5" y="41.6" style="fill:#1F2D3D">Tenants can open any bill's full breakdown and question it. Move-out reports drive deposit deductions and refunds.</text>
+      <text class="sd" x="2.5" y="44.8" style="fill:#1F2D3D">Announcements, trash pickup reminders and payment alerts arrive as prioritized in-app notifications.</text>
+    </svg>
+    <div class="cap" style="margin-top:1.2mm">Figure 1. The main journey as implemented in the app. Each step works in the demo and is covered by its built-in checks.</div>
+  </div>
+
+  <div class="p2-mid sec">
+    <div>
+      <h3>Inside the app</h3>
+      <div class="phones">
+        <figure class="phone"><div class="scr"><img src="img/student-home.png" alt="Student home screen"></div><figcaption><b>Student home</b><span class="cap">Room, rent, next due date and a daily summary.</span></figcaption></figure>
+        <figure class="phone"><div class="scr"><img src="img/bill-breakdown.png" alt="Electricity bill breakdown"></div><figcaption><b>Bill breakdown</b><span class="cap">Readings, rate and formula behind each share.</span></figcaption></figure>
+        <figure class="phone"><div class="scr"><img src="img/landlord-home.png" alt="Landlord dashboard"></div><figcaption><b>Landlord dashboard</b><span class="cap">Tasks ranked urgent, important or general.</span></figcaption></figure>
+      </div>
+    </div>
+    <div class="stack">
+      <h3>Under the hood</h3>
+      <dl>
+        <dt>One file, no server</dt><dd>A single HTML file with plain JavaScript and CSS. No framework or build step; icons and illustrations are inline SVG.</dd>
+        <dt>Hosted on GitHub Pages</dt><dd>Opens in any modern browser on Android phones and laptops.</dd>
+        <dt>Data in the browser</dt><dd>Records are saved in localStorage on the device, with versioned upgrades and recovery if saved data is damaged.</dd>
+        <dt>Self-checking</dt><dd>A built-in test suite of 38 checks covers bill math, payments, bookings, passport and more. All 38 pass.</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="matrix sec">
+    <div style="display:flex;justify-content:space-between;align-items:baseline">
+      <h3 style="margin:0">Modules, who uses them, and how real they are today</h3>
+      <div class="legend"><span><i class="k work"></i>Working in demo</span><span><i class="k sim"></i>Simulated</span><span><i class="k ext"></i>External link</span></div>
+    </div>
+    <table>
+      <thead><tr><th style="width:39mm">Module</th><th>What it does</th><th class="r">Student</th><th class="r">Landlord</th><th class="r">Parent</th><th class="r">Admin</th><th style="width:31mm">Status</th></tr></thead>
+      <tbody>
+        <tr><td>Listings and search</td><td>Search, filters, favorites, compare 3</td><td class="r"><i class="dot"></i></td><td class="r"><i class="dot"></i></td><td class="r"></td><td class="r"><i class="dot o"></i></td><td class="st"><i class="k work"></i>Working</td></tr>
+        <tr><td>Bookings and tenancy</td><td>Requests, approval, check-in, vacancies</td><td class="r"><i class="dot"></i></td><td class="r"><i class="dot"></i></td><td class="r"></td><td class="r"></td><td class="st"><i class="k work"></i>Working</td></tr>
+        <tr><td>Rent and payments</td><td>Due, partial, overdue; reminders; receipts</td><td class="r"><i class="dot"></i></td><td class="r"><i class="dot"></i></td><td class="r"><i class="dot"></i></td><td class="r"><i class="dot o"></i></td><td class="st"><i class="k sim"></i>Payments simulated</td></tr>
+        <tr><td>Utility bill splitting</td><td>Electricity and water shares; OCR simulated</td><td class="r"><i class="dot"></i></td><td class="r"><i class="dot"></i></td><td class="r"><i class="dot o"></i></td><td class="r"><i class="dot o"></i></td><td class="st"><i class="k work"></i>Working</td></tr>
+        <tr><td>Deposits, room reports</td><td>Photo reports tied to deductions, refunds</td><td class="r"><i class="dot"></i></td><td class="r"><i class="dot"></i></td><td class="r"></td><td class="r"></td><td class="st"><i class="k work"></i>Working</td></tr>
+        <tr><td>Rental Passport</td><td>On-time rate and record the student shares</td><td class="r"><i class="dot"></i></td><td class="r"><i class="dot o"></i></td><td class="r"><i class="dot o"></i></td><td class="r"></td><td class="st"><i class="k work"></i>Working</td></tr>
+        <tr><td>Parent access</td><td>Invite code, permissions, pay on behalf</td><td class="r"><i class="dot"></i></td><td class="r"></td><td class="r"><i class="dot"></i></td><td class="r"></td><td class="st"><i class="k work"></i>Working</td></tr>
+        <tr><td>Announcements, alerts</td><td>Landlord posts; prioritized notifications</td><td class="r"><i class="dot"></i></td><td class="r"><i class="dot"></i></td><td class="r"><i class="dot"></i></td><td class="r"><i class="dot"></i></td><td class="st"><i class="k work"></i>In-app only</td></tr>
+        <tr><td>Trash pickup schedules</td><td>Collection days, reminders, missed reports</td><td class="r"><i class="dot"></i></td><td class="r"><i class="dot"></i></td><td class="r"></td><td class="r"><i class="dot o"></i></td><td class="st"><i class="k work"></i>Working</td></tr>
+        <tr><td>Distance sharing</td><td>Distance home, shared for a set time</td><td class="r"><i class="dot"></i></td><td class="r"><i class="dot o"></i></td><td class="r"><i class="dot o"></i></td><td class="r"></td><td class="st"><i class="k sim"></i>Simulated GPS</td></tr>
+        <tr><td>Order Food</td><td>Opens GrabFood or foodpanda websites</td><td class="r"><i class="dot"></i></td><td class="r"></td><td class="r"></td><td class="r"></td><td class="st"><i class="k ext"></i>External link</td></tr>
+        <tr><td>Verification, moderation</td><td>Listing approval, reports, accounts, rates</td><td class="r"></td><td class="r"></td><td class="r"></td><td class="r"><i class="dot"></i></td><td class="st"><i class="k sim"></i>Badge simulated</td></tr>
+      </tbody>
+    </table>
+    <div class="cap" style="margin-top:1mm">Filled dot: uses the module. Hollow dot: sees it only when shared or for oversight.</div>
+  </div>
+  <div class="folio"><span><b>BoardEasy</b> project briefer</span><span>Page 2 of 3: Solution and technical approach</span></div>
+</section>
+
+<!-- =============================== PAGE 3 =============================== -->
+<section class="page" id="p3">
+  <div class="p3-head">
+    <h2>Value and feasibility</h2>
+    <p>BoardEasy's value comes from putting every party's records in one place, and from showing the working behind each number. The benefits below are what the design is intended to deliver once in real use; the demo shows how each would work.</p>
+  </div>
+
+  <div class="roles">
+    <div class="role"><h3>Students</h3><ul><li>Compare rooms on the things that matter, side by side.</li><li>Check exactly how a utility share was calculated, and question it.</li><li>Keep receipts and room records for move-out.</li><li>Build a Rental Passport from on-time payments.</li></ul></div>
+    <div class="role"><h3>Landlords</h3><ul><li>See rent collected, overdue accounts and vacancies at a glance.</li><li>Split shared bills with a formula tenants can verify.</li><li>Settle deposits with photo evidence.</li><li>Reach all tenants through announcements.</li></ul></div>
+    <div class="role"><h3>Parents</h3><ul><li>Follow balances and receipts the student chooses to share.</li><li>Pay on the student's behalf (simulated in the demo).</li><li>Read the boarding house's safety notes.</li></ul></div>
+    <div class="role"><h3>Administrators</h3><ul><li>Review new listings before they are labeled verified.</li><li>Handle reported listings and reviews.</li><li>Manage accounts and platform rates.</li></ul></div>
+  </div>
+
+  <div class="p3-mid sec">
+    <div class="bill">
+      <h3>Transparency, worked through</h3>
+      <svg viewBox="0 0 96 64" font-family="Instrument, Inter, sans-serif" aria-label="Worked example of an electricity bill split">
+        <style>.t{font-size:2.75px;fill:#1F2D3D}.m{font-size:2.5px;fill:#556578}.v{font-family:Bricolage,Inter,sans-serif;font-weight:700;font-size:3.4px;fill:#173B63}</style>
+        <!-- main meter bar: 185 kWh over 0..92 -> 0.4973 per kWh -->
+        <text class="t" x="0" y="3.4" style="font-weight:700">Main meter, November: 185 kWh × ₱11.17 = ₱2,066.45</text>
+        <rect x="0" y="6" width="19.89" height="7" fill="#173B63"/>
+        <rect x="19.89" y="6" width="42.27" height="7" fill="#2C5D8F"/>
+        <rect x="62.16" y="6" width="14.92" height="7" fill="#4EA5D9"/>
+        <rect x="77.08" y="6" width="14.92" height="7" fill="#fff" stroke="#556578" stroke-width=".35" stroke-dasharray="1 .7"/>
+        <text x="1" y="10.6" style="font-size:2.5px;fill:#fff;font-weight:700">201: 40</text>
+        <text x="21" y="10.6" style="font-size:2.5px;fill:#fff;font-weight:700">202: 85 kWh, two tenants</text>
+        <text x="63.2" y="10.6" style="font-size:2.5px;fill:#fff;font-weight:700">203: 30</text>
+        <text x="78.4" y="10.6" style="font-size:2.5px;fill:#556578;font-weight:700">Common</text>
+        <text class="m" x="0" y="17.4">Readings 1,200 to 1,385. Rooms 201 to 203 by submeter, common area 30 kWh;</text><text class="m" x="0" y="20.4">rooms 204 and 205 used 0 kWh.</text>
+        <!-- room 203 calculation -->
+        
+        
+        <rect x="0" y="24" width="60" height="21" fill="#EEF3F8"/>
+        <text class="t" x="3" y="28.6" style="font-weight:700">Room 203, one tenant</text>
+        <text class="m" x="3" y="32.4">Submeter 3,110 to 3,140 = 30 kWh</text>
+        <text class="m" x="3" y="35.8">30 kWh × ₱11.17 per kWh</text>
+        <text class="v" x="3" y="41.4">Tenant's share: ₱335.10</text>
+        <rect x="63" y="24" width="33" height="21" fill="#fff" stroke="#D3DCE6" stroke-width=".35"/>
+        <text class="t" x="65.5" y="28.6" style="font-weight:700">Common area</text>
+        <text class="m" x="65.5" y="32.2">185 − 155 = 30 kWh</text>
+        <text class="m" x="65.5" y="35.4">(₱335.10) paid by the</text>
+        <text class="m" x="65.5" y="38.6">landlord in this bill,</text>
+        <text class="m" x="65.5" y="41.8">not passed to tenants</text>
+        <text class="m" x="0" y="50.4">In room 202, the 85 kWh charge is shared by its two tenants in proportion</text>
+        <text class="m" x="0" y="53.4">to days occupied. A house on one shared meter can instead split by days and</text>
+        <text class="m" x="0" y="56.8">declared appliances. Either way, the tenant sees these same lines in the app.</text>
+        <text class="m" x="0" y="62" style="font-style:italic">Demo data from the app's sample boarding house; the rate is real.</text>
+      </svg>
+    </div>
+    <div class="feas">
+      <h3>Why it is feasible</h3>
+      <div class="f"><b>Nothing to install or host</b>A single static file on free GitHub Pages hosting; it runs in a phone or laptop browser.</div>
+      <div class="f"><b>Grounded in local reality</b>Real barangays, campuses and utility rates; rents estimated from public listings.</div>
+      <div class="f"><b>Already demonstrable</b>Four demo accounts show every role end to end, and 38 automated checks pass.</div>
+      <div class="f"><b>Honest by design</b>Every simulated step is labeled on screen, from payments to verification badges.</div>
+    </div>
+  </div>
+
+  <div class="bounds sec">
+    <h3>From demo to real use</h3>
+    <table>
+      <thead><tr><th style="width:30mm">Area</th><th>In the current demo</th><th>What real deployment would need</th></tr></thead>
+      <tbody>
+        <tr><td>Data and accounts</td><td>Saved in one browser; demo passwords</td><td>A secure server database and real sign-in</td></tr>
+        <tr><td>Payments</td><td>GCash, Maya and wallet are simulated; no money moves</td><td>A licensed payment gateway and real receipts</td></tr>
+        <tr><td>Verification</td><td>DEMO VERIFIED is a simulated status</td><td>A real process for checking landlords and listings</td></tr>
+        <tr><td>Location</td><td>Simulated distance from sample points</td><td>Device location, only with the student's consent</td></tr>
+        <tr><td>Notifications</td><td>In-app only</td><td>SMS, email or push messages</td></tr>
+        <tr><td>Food and safety data</td><td>External delivery links; illustrative flood labels</td><td>Partner agreements; official hazard data from the city</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="close">
+    <div class="stmt">Finding, renting and living in a boarding house involves students, landlords and parents who rarely share the same records. BoardEasy puts those records, and the reasoning behind every charge, in one place that all of them can trust.</div>
+    <dl>
+      <dt>Live demo</dt><dd>markfrancisportugalcarillo01-blip.github.io<br>/boardeasy</dd>
+      <dt>Source code</dt><dd>github.com/markfrancisportugalcarillo01-blip<br>/boardeasy</dd>
+      <dt>Try it</dt><dd style="word-break:normal">One-tap demo accounts for all four roles are on the sign-in screen.</dd>
+    </dl>
+  </div>
+  <div class="folio"><span><b>BoardEasy</b> project briefer</span><span>Page 3 of 3: Value, feasibility and next steps</span></div>
+</section>
+</body>
+</html>
