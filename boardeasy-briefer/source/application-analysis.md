@@ -36,7 +36,11 @@ Investigated on November 24, 2026 (demo date in the app).
 | Admin: users, listings, review moderation, transactions, waste overview, settings, reset, self-check | Working demo | |
 | Business model simulation | Illustrative | ₱25/room/month, ₱5/payment, referral fees: untested assumptions |
 
-## Technical implementation
+## Planned platforms (from the project team)
+- BoardEasy is planned as an Android app and a web app. A desktop version is under consideration, not decided.
+- The current HTML/CSS/JavaScript build is the browser prototype of that product.
+
+## Technical implementation (current prototype)
 - One static file (`index.html`, about 500 KB): HTML, CSS and vanilla JavaScript; no framework, no server, no build step.
 - Data kept in browser localStorage (per device); versioned schema (v6) with migration and corrupt-data recovery.
 - Hash-based router with role-based navigation for four roles; inline SVG icons and illustrations.

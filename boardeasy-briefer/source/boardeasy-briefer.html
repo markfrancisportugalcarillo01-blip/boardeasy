@@ -116,7 +116,7 @@ b{font-weight:700}
 .feas .f b{font-family:"Bricolage","Inter",sans-serif;color:var(--navy);display:block;font-size:8.9pt}
 .bounds table{width:100%;border-collapse:collapse;margin-top:1.2mm;table-layout:fixed}
 .bounds th{font-family:"Bricolage","Inter",sans-serif;font-size:8.2pt;text-align:left;padding:0 2mm 1.2mm 0;border-bottom:1pt solid var(--navy);color:var(--navy)}
-.bounds td{padding:1.8mm 2mm 1.8mm 0;border-bottom:.5pt solid var(--rule);font-size:8.1pt;line-height:1.3;vertical-align:top}
+.bounds td{padding:1.45mm 2mm 1.45mm 0;border-bottom:.5pt solid var(--rule);font-size:8.1pt;line-height:1.3;vertical-align:top}
 .bounds td:first-child{font-family:"Bricolage","Inter",sans-serif;font-weight:700;color:var(--navy);width:30mm}
 .bounds tr:last-child td{border-bottom:0}
 .close{margin-top:auto;background:var(--navy);color:#fff;padding:4.6mm 6mm;display:grid;grid-template-columns:1fr 60mm;column-gap:7mm;align-items:start}
@@ -125,7 +125,7 @@ b{font-weight:700}
 .close dt{font-family:"Bricolage","Inter",sans-serif;font-weight:700;color:#8FD3C8;margin-top:1.6mm}
 .close dt:first-child{margin-top:0}
 .close dd{color:#fff}
-#p3 .sec{margin-top:6mm;padding-top:4mm}
+#p3 .sec{margin-top:5mm;padding-top:3.6mm}
 #p1 .p1-foot{margin-top:auto}
 </style>
 </head>
@@ -150,9 +150,9 @@ b{font-weight:700}
         <li>Kimberly E. Cabrea</li>
       </ol>
       <dl>
-        <dt>Type</dt><dd>Web application (phones and laptops)</dd>
+        <dt>Platform</dt><dd>Android app and web app (planned)</dd>
         <dt>Setting</dt><dd>Naga City, Camarines Sur</dd>
-        <dt>Stage</dt><dd>Working demo with simulated data</dd>
+        <dt>Stage</dt><dd>Working browser prototype with simulated data</dd>
         <dt>Version</dt><dd>1.0.0</dd>
       </dl>
     </aside>
@@ -253,11 +253,11 @@ b{font-weight:700}
       </div>
     </div>
     <div class="stack">
-      <h3>Under the hood</h3>
+      <h3>Platform and technology</h3>
       <dl>
-        <dt>One file, no server</dt><dd>A single HTML file with plain JavaScript and CSS. No framework or build step; icons and illustrations are inline SVG.</dd>
-        <dt>Hosted on GitHub Pages</dt><dd>Opens in any modern browser on Android phones and laptops.</dd>
-        <dt>Data in the browser</dt><dd>Records are saved in localStorage on the device, with versioned upgrades and recovery if saved data is damaged.</dd>
+        <dt>Where it is headed</dt><dd>BoardEasy is planned as an Android app and a web app. A desktop version is still being considered.</dd>
+        <dt>Today's prototype</dt><dd>Built with HTML, CSS and JavaScript and hosted on GitHub Pages, so it already opens on Android phones and laptops.</dd>
+        <dt>Data for now</dt><dd>Demo records are saved on the device, with versioned upgrades and recovery if saved data is damaged.</dd>
         <dt>Self-checking</dt><dd>A built-in test suite of 38 checks covers bill math, payments, bookings, passport and more. All 38 pass.</dd>
       </dl>
     </div>
@@ -342,7 +342,7 @@ b{font-weight:700}
     </div>
     <div class="feas">
       <h3>Why it is feasible</h3>
-      <div class="f"><b>Nothing to install or host</b>A single static file on free GitHub Pages hosting; it runs in a phone or laptop browser.</div>
+      <div class="f"><b>Already running on phones</b>The browser prototype works on Android phones and laptops today, a solid base for the planned Android and web apps.</div>
       <div class="f"><b>Grounded in local reality</b>Real barangays, campuses and utility rates; rents estimated from public listings.</div>
       <div class="f"><b>Already demonstrable</b>Four demo accounts show every role end to end, and 38 automated checks pass.</div>
       <div class="f"><b>Honest by design</b>Every simulated step is labeled on screen, from payments to verification badges.</div>
@@ -354,6 +354,7 @@ b{font-weight:700}
     <table>
       <thead><tr><th style="width:30mm">Area</th><th>In the current demo</th><th>What real deployment would need</th></tr></thead>
       <tbody>
+        <tr><td>Platform</td><td>Browser prototype on GitHub Pages</td><td>The planned Android app and web app</td></tr>
         <tr><td>Data and accounts</td><td>Saved in one browser; demo passwords</td><td>A secure server database and real sign-in</td></tr>
         <tr><td>Payments</td><td>GCash, Maya and wallet are simulated; no money moves</td><td>A licensed payment gateway and real receipts</td></tr>
         <tr><td>Verification</td><td>DEMO VERIFIED is a simulated status</td><td>A real process for checking landlords and listings</td></tr>
